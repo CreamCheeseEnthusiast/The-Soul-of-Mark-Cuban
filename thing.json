@@ -1,0 +1,363 @@
+{
+  "project": {
+    "id": "etu3ok",
+    "name": "thing",
+    "creationTs": 1731180812256,
+    "lastModifiedTs": 1731182024189,
+    "userSetData": {
+      "description": "CUBAN DEMON AND ALSO CUBAN CUBED",
+      "tags": [],
+      "contactURL": "",
+      "tutorialYouTube": ""
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "face_landmark_6lke5j",
+        "nodeSpecId": "face_landmark",
+        "customData": {
+          "rightOfNode": "mask_visualizer_udbp2k",
+          "previewX": 816,
+          "previewY": 16,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": -144,
+          "posY": -192,
+          "width": 176,
+          "height": 143,
+          "selected": false
+        },
+        "inputValues": {
+          "staticImage": false
+        },
+        "incomingEdges": {
+          "image": [
+            {
+              "sourceNodeId": "mask_visualizer_udbp2k",
+              "outputId": "maskedImage"
+            }
+          ]
+        }
+      },
+      {
+        "id": "landmark_visualizer_rt6jmn",
+        "nodeSpecId": "landmark_visualizer",
+        "customData": {
+          "rightOfNode": "face_landmark_6lke5j",
+          "previewX": 816,
+          "previewY": 16,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 384,
+          "posY": -192,
+          "width": 189.603515625,
+          "height": 205,
+          "selected": false
+        },
+        "propValues": {
+          "keypointScale": 1,
+          "color": "#08f7fe",
+          "boundingBox": false,
+          "hidePreview": false
+        },
+        "incomingEdges": {
+          "landmarkResult": [
+            {
+              "sourceNodeId": "face_landmark_6lke5j",
+              "outputId": "landmarkResult"
+            }
+          ],
+          "image": [
+            {
+              "sourceNodeId": "input_image_6k2xmq",
+              "outputId": "image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "body_segmentation_a4cyju",
+        "nodeSpecId": "body_segmentation",
+        "customData": {
+          "rightOfNode": "input_image_0nhk12",
+          "previewX": 480,
+          "previewY": 16,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 640,
+          "posY": -112,
+          "width": 185.29345703125,
+          "height": 105,
+          "selected": false
+        },
+        "propValues": {
+          "modelOption": "MediaPipeSelfieSegmentation"
+        },
+        "incomingEdges": {
+          "image": [
+            {
+              "sourceNodeId": "input_image_6k2xmq",
+              "outputId": "image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "mask_visualizer_udbp2k",
+        "nodeSpecId": "mask_visualizer",
+        "customData": {
+          "rightOfNode": "body_segmentation_a4cyju",
+          "previewX": 480,
+          "previewY": 16,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 800,
+          "posY": 32,
+          "width": 176,
+          "height": 179,
+          "selected": false
+        },
+        "propValues": {
+          "mode": "fg-image",
+          "hidePreview": false
+        },
+        "inputValues": {
+          "color": "#22e8dd"
+        },
+        "incomingEdges": {
+          "image": [
+            {
+              "sourceNodeId": "input_image_zvd5qi",
+              "outputId": "image"
+            }
+          ],
+          "segmentationResult": [
+            {
+              "sourceNodeId": "body_segmentation_a4cyju",
+              "outputId": "segmentationResult"
+            }
+          ]
+        }
+      },
+      {
+        "id": "virtual_sticker_eregul",
+        "nodeSpecId": "virtual_sticker",
+        "customData": {
+          "rightOfNode": "face_landmark_6lke5j",
+          "previewX": 480,
+          "previewY": 272,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": -368,
+          "posY": 96,
+          "width": 176,
+          "height": 255,
+          "selected": false
+        },
+        "propValues": {
+          "anchor": "mustache",
+          "scale": 1,
+          "offsetX": -200,
+          "offsetY": -200,
+          "hidePreview": false
+        },
+        "incomingEdges": {
+          "landmarkResult": [
+            {
+              "sourceNodeId": "face_landmark_6lke5j",
+              "outputId": "landmarkResult"
+            }
+          ],
+          "stickerImage": [
+            {
+              "sourceNodeId": "input_image_zvd5qi",
+              "outputId": "image"
+            }
+          ],
+          "originalImage": [
+            {
+              "sourceNodeId": "mask_visualizer_udbp2k",
+              "outputId": "maskedImage"
+            }
+          ]
+        }
+      },
+      {
+        "id": "input_image_6k2xmq",
+        "nodeSpecId": "input_image",
+        "customData": {
+          "initialWidth": 448,
+          "initialHeight": 240,
+          "previewX": 16,
+          "previewY": 16,
+          "previewWidth": 448,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 384,
+          "posY": 64,
+          "width": 176,
+          "height": 180,
+          "selected": false
+        },
+        "propValues": {
+          "urls": [
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic1.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic2.jpeg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic3.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic4.jpeg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic5.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic6.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic7.jpeg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic8.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic9.jpg"
+          ],
+          "gridColumnCount": 3,
+          "allowUserUpload": false,
+          "selectedImageUrl": "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic5.jpg",
+          "hidePreview": false
+        }
+      },
+      {
+        "id": "input_image_zvd5qi",
+        "nodeSpecId": "input_image",
+        "customData": {
+          "initialWidth": 448,
+          "initialHeight": 240,
+          "previewX": 32,
+          "previewY": 288,
+          "previewWidth": 448,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": -135.07005310058594,
+          "posY": 192.72097778320312,
+          "width": 176,
+          "height": 180,
+          "selected": false
+        },
+        "propValues": {
+          "urls": [
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic1.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic2.jpeg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic3.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic4.jpeg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic5.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic6.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic7.jpeg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic8.jpg",
+            "https://storage.googleapis.com/tfweb/visualblocks-input-images/pic9.jpg",
+            "image=ilk9n8"
+          ],
+          "gridColumnCount": 3,
+          "allowUserUpload": false,
+          "selectedImageUrl": "image=ilk9n8",
+          "hidePreview": false
+        }
+      },
+      {
+        "id": "image_mixer_p08l1q",
+        "nodeSpecId": "image_mixer",
+        "customData": {
+          "rightOfNode": "virtual_sticker_eregul",
+          "previewX": 16,
+          "previewY": 544,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": 128,
+          "posY": -80,
+          "width": 224,
+          "height": 254,
+          "selected": false
+        },
+        "propValues": {
+          "mode": "lighter",
+          "hidePreview": false
+        },
+        "inputValues": {
+          "topText": "",
+          "midText": "",
+          "bottomText": ""
+        },
+        "incomingEdges": {
+          "image1": [
+            {
+              "sourceNodeId": "input_image_6k2xmq",
+              "outputId": "image"
+            }
+          ],
+          "image2": [
+            {
+              "sourceNodeId": "input_image_zvd5qi",
+              "outputId": "image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "embed_website_ltqa4i",
+        "nodeSpecId": "embed_website",
+        "customData": {
+          "disableMouseInteractionWhenTransforming": true,
+          "previewX": 816,
+          "previewY": 272,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": -448,
+          "posY": -80,
+          "width": 240,
+          "height": 131,
+          "selected": false
+        },
+        "propValues": {
+          "hidePreview": false
+        },
+        "inputValues": {
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSciwyvRbQ3VzYlMJb7vcZAlv_djjwLiXGKfENz0oeSUxc3gDg/viewform?usp=sf_link"
+        }
+      },
+      {
+        "id": "embed_website_mpxweg",
+        "nodeSpecId": "embed_website",
+        "customData": {
+          "disableMouseInteractionWhenTransforming": true,
+          "previewX": 352,
+          "previewY": 544,
+          "previewWidth": 320,
+          "previewHeight": 240
+        },
+        "uiData": {
+          "posX": -263.1278381347656,
+          "posY": 119.07923889160156,
+          "width": 240,
+          "height": 131,
+          "selected": false
+        },
+        "propValues": {
+          "hidePreview": true
+        },
+        "inputValues": {
+          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        }
+      }
+    ]
+  },
+  "customNodeUrls": [
+    "https://storage.googleapis.com/tfweb/visualblocks-github-bundles/@visualblocks/gemini@latest/dist/bundle.js"
+  ]
+}
